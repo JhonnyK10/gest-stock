@@ -1,6 +1,5 @@
 from sqlalchemy import Column, Integer, String
 from src.config.data_base import Base
-from werkzeug.security import generate_password_hash, check_password_hash
 
 class UserModel(Base):
     __tablename__ = "users"
@@ -19,12 +18,9 @@ class UserModel(Base):
         self.cnpj = cnpj
         self.email = email
         self.celular = celular
-        self.senha = generate_password_hash(senha)  # Hash da senha
+        self.senha = senha  # Senha em texto plano (sem hash)
         self.status = status
         self.activation_code = activation_code
-
-    def check_password(self, senha):
-        return check_password_hash(self.senha, senha)
 
     def to_dict(self):
         return {
