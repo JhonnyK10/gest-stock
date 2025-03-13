@@ -1,12 +1,10 @@
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-db = SQLAlchemy()
+SQLALCHEMY_DATABASE_URL = "sqlite:///./gest_stock.db"
 
-def init_db(app):
-    """
-    Inicializa a base de dados com o app Flask e o SQLAlchemy.
-    """
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@mysql57:3306/market_management'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.init_app(app)
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, debug=True)
 
+Base = declarative_base()
