@@ -102,7 +102,6 @@ function UserProducts() {
               <th>Vendedor</th>
               <th>Imagem</th>
               <th>Nome</th>
-              <th>Descrição</th>
               <th>Valor</th>
               <th>Quantidade</th>
               <th>Ação</th>
@@ -120,7 +119,6 @@ function UserProducts() {
                   )}
                 </td>
                 <td>{item.name}</td>
-                <td>{item.descricao || "Sem descrição"}</td>
                 <td>R$ {item.price?.toFixed(2)}</td>
                 <td>{item.quantity}</td>
                 <td>
