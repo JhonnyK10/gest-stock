@@ -1,24 +1,3 @@
-.storePrdotos-btn {
-  width: 200px;
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #0055ff;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  margin-top: auto;
-}
-
-.storePrdotos-btn:hover {
-  background-color: #003fcc;
-  transform: scale(1.05);
-}
-
-
 #listar-container {
   display: flex;
   flex-direction: column;
@@ -96,7 +75,8 @@ h1 {
 }
 
 .excluir-btn {
-  width: 200px;
+  width: 120px;
+  margin-left: 40px;
   margin-top: 20px;
   padding: 12px 20px;
   background-color: #0055ff;
@@ -112,4 +92,30 @@ h1 {
 .excluir-btn:hover {
   background-color: #cc0000;
   transform: scale(1.05);
+}
+
+.modal-content{
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #242424;
+}
+
+.modal-content h2 {
+  text-align: center;
+}
+
+.update-form label{
+  display: block;
+  margin-bottom: 15px;
+}
+
+.update-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
 }

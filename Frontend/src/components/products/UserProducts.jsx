@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./css/Store.css";
+import "./css/UserProducts.css";
 import verify from "../../hooks/autenticate";
 
 function UserProducts() {
@@ -214,7 +214,7 @@ function UserProducts() {
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <h2>Atualizar Produto ID {selectedProduct?.id}</h2>
               {erro && <p style={{ color: "red" }}>{erro}</p>}
-              <form onSubmit={handleUpdateSubmit}>
+              <form className="update-form" onSubmit={handleUpdateSubmit}>
                 <label>
                   Nome:
                   <input
@@ -247,10 +247,10 @@ function UserProducts() {
                 </label>
                 <br />
                 <div className="modal-actions">
-                  <button type="submit" disabled={saving}>
+                  <button className="update-btn" type="submit" disabled={saving}>
                     {saving ? "Salvando..." : "Salvar"}
                   </button>
-                  <button type="button" onClick={closeModal}>
+                  <button className="excluir-btn" type="button" onClick={closeModal}>
                     Cancelar
                   </button>
                 </div>
