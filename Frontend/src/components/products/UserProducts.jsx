@@ -7,7 +7,6 @@ function UserProducts() {
   const [erro, setErro] = useState("");
   const [mensagem, setMensagem] = useState("");
 
-  // Estado para controlar o modal de update
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [formData, setFormData] = useState({
@@ -74,7 +73,6 @@ function UserProducts() {
     }
   };
 
-  // Abre modal e preenche form com os dados do produto selecionado
   const openUpdateModal = (product) => {
     setSelectedProduct(product);
     setFormData({
@@ -87,20 +85,17 @@ function UserProducts() {
     setShowModal(true);
   };
 
-  // Fecha o modal
   const closeModal = () => {
     setShowModal(false);
     setSelectedProduct(null);
     setFormData({ name: "", price: "", quantity: "" });
   };
 
-  // Atualiza os dados do form conforme o usuário digita
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((old) => ({ ...old, [name]: value }));
   };
 
-  // Envia atualização via PUT
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     if (!selectedProduct) return;
@@ -110,14 +105,12 @@ function UserProducts() {
     setMensagem("");
     const token = sessionStorage.getItem("token");
 
-    // Validação simples
     if (!formData.name || !formData.price || !formData.quantity) {
       setErro("Preencha todos os campos");
       setSaving(false);
       return;
     }
 
-    // Monta payload com dados corretos (converte price e quantity para número)
     const updatedData = {
       name: formData.name,
       price: parseFloat(formData.price),
@@ -154,20 +147,17 @@ function UserProducts() {
     <div>
       <header>
         <h1 className="site-name">Gest Stock</h1>
-        <a href="/user_purchases">
-          <button className="meusProdutos-btn">Minhas Compras</button>
-        </a>
-
-        <a href="/user_sales">
-          <button className="meusProdutos-btn">Minhas Vendas</button>
-        </a>
-
-        <a href="/store_products">
-          <button className="meusProdutos-btn">Loja</button>
-        </a>
-        <a href="/adicionar-produto">
-          <button className="meusProdutos-btn">Adicionar Produto</button>
-        </a>
+        <div className="btn-container">
+          <a href="/store_products">
+            <button className="btn">Loja</button>
+          </a>
+          <a href="/user_purchases">
+            <button className="btn">Minhas Compras</button>
+          </a>
+          <a href="/user_sales">
+            <button className="btn">Minhas Vendas</button>
+          </a>
+        </div>
       </header>
 
       <main id="listar-container">
@@ -197,10 +187,10 @@ function UserProducts() {
                   <td>{product.quantity}</td>
                   <td>{product.status ? "Ativo" : "Inativo"}</td>
                   <td>
-                    <button onClick={() => openUpdateModal(product)}>
+                    <button className="update-btn" onClick={() => openUpdateModal(product)}>
                       Atualizar
                     </button>
-                    <button onClick={() => toggleStatus(product.id)}>
+                    <button className="desactivate-btn" onClick={() => toggleStatus(product.id)}>
                       {product.status ? "Desativar" : "Ativar"}
                     </button>
                   </td>
@@ -213,8 +203,12 @@ function UserProducts() {
             )}
           </tbody>
         </table>
+        <br />
+        <a href="/adicionar_produto">
+          <button className="btn">Adicionar</button>
+        </a>
 
-        {/* Modal de update */}
+        {}
         {showModal && (
           <div className="modal-overlay" onClick={closeModal}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>

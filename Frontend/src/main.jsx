@@ -22,7 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/cadastro" element={<CadastroUser />}>
           {" "}
         </Route>
-        <Route path="/adicionar-produto" element={<NewProduct />}>
+        <Route path="/adicionar_produto" element={<NewProduct />}>
           {" "}
         </Route>
         <Route path="/login" element={<LoginUser />}>
